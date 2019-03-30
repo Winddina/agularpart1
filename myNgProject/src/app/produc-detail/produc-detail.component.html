@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-6 bg-info">
+      <h4>สินค้าที่เลือก</h4><table class="table">
+        
+  
+    <thead>
+      <tr>
+          <td>รหัสสินค้า </td>
+          <td>{{selectedProduct.pId}}</td>
+      </tr>
+      <tr>
+          <td>ชื่อสินค้า</td>
+          <td>{{selectedProduct.pName}}</td>
+      </tr>
+      <tr>
+          <td>ราคาสินค้า</td>
+              <td>{{selectedProduct.pCost}}</td>
+      </tr>
+      <tr>
+          <td>จำนวนที่ต้องการซื้อ</td>
+         <td>  <input class="form-control" name="qty"type="text" placeholder="จำนวน" [(ngModel)]="selectedProduct.qty"></td>
+      </tr>  
+    </thead>
+    <tbody>
+     </tbody>
+  </table>
+  
+  <button *ngIf="selectedProduct.qty" type="button" class="btn btn-success" (click)="addCart()">เพิ่มใส่ตะกร้า</button>
+ 
+ 
+</div>
+
+<div class="col-6 bg-success">
+    <app-product-cart [addcart] = "cart"></app-product-cart>
+  </div>
+
+

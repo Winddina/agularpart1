@@ -1,2 +1,25 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>รหัสสินค้า</th>
+      <th>ชื่อสินค้า</th>
+      <th>ราคา</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor ="let s of productList">
+      <td>{{s.pId}} </td>
+      <td>{{s.pName}}</td>
+      <td>{{s.pCost}}</td>
+     <td><button type="button" class="btn btn-secondary" (click)="selectProduct(s)">เลือกสินค้า</button></td> 
 
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+<app-produc-detail [selectedProduct]="selectedProduct"></app-produc-detail>
