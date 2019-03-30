@@ -6,44 +6,32 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'myNgProject';
-  name:string = "นาย ปพนชัย พงษ์เจริญ";
-  Grade:number = 49;
-
-  studentlist=[
-    {
-    studentid:"5921602647",
-    name:"Paponchai Pongchareon",
-    weight:59,
-    height:175
-  },
-{
-  studentid:"5921602702",
-    name:"shopishe awadac",
-    weight:80,
-    height:190
-},
-{
-  studentid:"5921602561",
-    name:"adam ranger",
-    weight:62,
-    height:152
-}
-];
+  productList=[{
+    pId:"0001",
+    pName:"แปลงสีฟัน",
+    pCost:200
+  },{
+    pId:"0002",
+    pName:"แก้วน้ำ",
+    pCost:10
+  },{
+    pId:"0003",
+    pName:"ยาสีฟัน",
+    pCost:20
+  }
+]
+  
 constructor(){
 
-  this.studentlist.map((object,index)=>{
-    let obj:any=object;
-    obj.bmi=(object.weight/((object.height/100)*(object.height/100))).toFixed(2);
-    return obj;
-  });
+ 
+  
   
 
 
 
 // let student= "student in function";
 //console.log(this.student);
-console.log(this.studentlist);
+
 
 }
 }
