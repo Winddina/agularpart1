@@ -1,52 +1,87 @@
-<!--The content below is only a placeholder and can be replaced.-->
 
-<div class="input-group">
-  <div class="input-group-prepend">
-    <button class="btn btn-success" type="button">ชื่อ</button>
-  </div>
-  <input type="text" class="form-control" [(ngModel)]="name" name="winddina" aria-label="" aria-describedby="basic-addon1">
-</div>
-<div class="input-group">
-    <div class="input-group-prepend">
-      <button class="btn btn-success" type="button">คะแนน</button>
-    </div>
-    <input type="text" class="form-control"  [(ngModel)]="Grade" Grade="qwerty" aria-label="" aria-describedby="basic-addon1">
-  </div>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th>คูณจำนวน</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      
+      <td><div class="input-group">
+        <div class="input-group-prepend">
+          <button class="btn btn-success" type="button">ค่าที่1</button>
+        </div>
+        <input type="number" class="form-control" placeholder="" 
+        aria-label="" aria-describedby="basic-addon1" [(ngModel)]="request.key1">
+      </div></td>
+      <td><div class="input-group">
+        <div class="input-group-prepend">
+          <button class="btn btn-success" type="button">ค่าที่2</button>
+        </div>
+        <input type="number" class="form-control" placeholder="" 
+        aria-label="" aria-describedby="basic-addon1"[(ngModel)]="request.key2"> 
+      </div></td>
+      <td><button type="button" class="btn btn-primary" (click) = "getData()">คำนวณ</button></td>
+    </tr>
+    <label *ngIf="result!=null">ผลลัพธ์ {{result}}</label> 
+  </tbody>
+</table>
 
-<router-outlet></router-outlet> 
-{{name}}
-<label *ngIf="Grade>=50">Grade A</label>
-<label *ngIf="Grade<50">Grade F</label>
 <br>
 <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th>studentid</th>
-        <th>Name</th>
-        <th>weght</th>
-        <th>height</th>
-        <th>IBM</th>
-        <th>ผลลัพ</th>
+        <th>ชื่อ</th>
+        <th>ID</th>
       </tr>
     </thead>
     <tbody>
-        <tr>
-            <td >{{studen.studentid}}</td>
-            <td>{{studen.name}}</td>
-            <td >{{studen.weight}}</td>
-            <td >{{studen.height}}</td>
-          </tr>
-      <tr *ngFor="let s of studentlist;">
-          <td >{{s.studentid}}</td>
-          <td>{{s.name}}</td>
-          <td >{{s.weight}}</td>
-          <td >{{s.height}}</td>
-          <td >{{s.bmi}}</td>
-          <td *ngIf="s.bmi>20">อ้วน</td>
-          <td *ngIf="s.bmi==20">ปกติ</td>
-          <td *ngIf="s.bmi<20">ผอม</td>
-          
-        </tr>
-     
+      <tr>
+        <td>{{userDetail.name}}</td>
+        <td>{{userDetail.id}}</td>
+      </tr>
+      <tr *ngFor="let n of noteDetail">
+        <td>
+            <li class="list-group-item">{{n.name}} </li>
+        </td>
+        <td>
+            <button type="button" class="btn btn-primary" (click)= "selectNote(n.list)">ดูรายละเอียด</button>
+            <button type="button" class="btn btn-danger" (click) = "editNote(n)">แก้ไข</button>
+        </td>
+      </tr>
+      <tr>
+        <th>
+            <div class="input-group input-group-sm">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm"></span>
+              </div>
+              <input type="text" class="form-control" [(ngModel)]="editNoteDetail.name" >
+            </div>
+            <br>
+            <button type="button" class="btn btn-warning"(click)="updateNoteName()">แก้ไข</button></th>
+            <label>{{errorMsg}}</label>
+      </tr>
+      <tr>
+        <hr>
+        <h4>รายละเอียด note</h4>
+      </tr>
+      <tr>
+          <th>Priority</th>
+          <th width="50%">รายละเอียด</th>
+      </tr>
+      <tr *ngFor= "let list of listDetail"
+      [ngClass]="{'bg-danger text-white': list.priority>5,
+                   'bg-info ':list.priority<5}">
+        <td>{{list.priority}}</td>
+        <td>{{list.detail}}</td>
+
+      </tr>
     </tbody>
   </table>
+<!-- <ul class="list-group">
+  <li class="list-group-item" *ngFor="let n of noteDetail">{{n.name}}
+    <button type="button" class="btn btn-primary">ดูรายละเอียด</button></li>
+</ul> -->
